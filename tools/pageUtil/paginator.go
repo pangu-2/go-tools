@@ -27,7 +27,12 @@ func Pagination(count int, page int, pageSize int) *Paginator {
 	Page := new(Paginator)
 	Page.PageSize = pageSize
 	Page.TotalCount = count
-	Page.TotalPage = int(math.Ceil(float64(count) / float64(pageSize))) //page总数
+	if count == 0 {
+		Page.TotalPage = 0
+	} else {
+		Page.TotalPage = int(math.Ceil(float64(count) / float64(pageSize))) //page总数
+	}
+
 	//if count % pageSize > 0 {
 	//	Page.TotalPage = count / pageSize + 1
 	//}
