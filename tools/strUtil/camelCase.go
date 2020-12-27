@@ -67,7 +67,7 @@ func (mapper GonicMapper) Table2Obj(name string) string {
 }
 
 var LintGonicMapper = GonicMapper{
-	"API":   true,
+	//"API":   true,
 	"ASCII": true,
 	"CPU":   true,
 	"CSS":   true,
@@ -77,7 +77,7 @@ var LintGonicMapper = GonicMapper{
 	"HTML":  true,
 	"HTTP":  true,
 	"HTTPS": true,
-	"ID":    true,
+	//"ID":    true,
 	"IP":    true,
 	"JSON":  true,
 	"LHS":   true,
@@ -94,7 +94,7 @@ var LintGonicMapper = GonicMapper{
 	"UID":   true,
 	"UUID":  true,
 	"URI":   true,
-	"URL":   true,
+	//"URL":   true,
 	"UTF8":  true,
 	"VM":    true,
 	"XML":   true,
