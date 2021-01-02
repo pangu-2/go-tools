@@ -2,14 +2,14 @@ package convUtil
 
 import "strconv"
 
-func intToStr(i int) string {
+func IntToStr(i int) string {
 	return strconv.Itoa(i)
 }
 
-func int32ToStr(i int32) string {
+func Int32ToStr(i int32) string {
 	return strconv.FormatInt(int64(i), 10)
 }
 
-func int64ToStr(i int64) string {
+func Int64ToStr(i int64) string {
 	return strconv.FormatInt(i, 10)
 }
