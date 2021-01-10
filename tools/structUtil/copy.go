@@ -1,15 +1,15 @@
 package structUtil
 
 import (
+	"fmt"
 	"reflect"
 	"time"
 	"unsafe"
-	"fmt"
 )
 
 const (
-DATE_PATTERN      = "2006-01-02"
-DATE_TIME_PATTERN = "2006-01-02 15:04:05"
+	DATE_PATTERN      = "2006-01-02"
+	DATE_TIME_PATTERN = "2006-01-02 15:04:05"
 )
 
 type BeanUpdateLog struct {
@@ -143,7 +143,8 @@ func Copy(source interface{}, dest interface{}, ignoreFields ...string) ([]strin
 				modified = append(modified, name)
 			} else if destFieldValueTypeStr[0] == '*' &&
 				destFieldValueTypeStr[1:] == sourceFieldValueTypeStr &&
-				((!destFieldValue.IsZero() && !reflect.DeepEqual(sourceFieldValue.Interface(), destFieldValue.Elem().Interface())) || (destFieldValue.IsNil())) {
+				((!destFieldValue.IsZero() && !reflect.DeepEqual(sourceFieldValue.Interface(), destFieldValue.Elem().Interface())) ||
+					(destFieldValue.IsNil())) {
 				switch sourceFieldValue.Kind() {
 				case reflect.Bool:
 					v := sourceFieldValue.Interface().(bool)
