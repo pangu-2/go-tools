@@ -9,67 +9,132 @@ type R struct {
 }
 
 //正确
-func OkDefault() *R {
+func OkDefault() R {
+	return R{Code: http.StatusOK, Message: SUCCESS_MESSAGE}
+}
+
+//正确
+func OkDefaultPointer() *R {
 	return &R{Code: http.StatusOK, Message: SUCCESS_MESSAGE}
 }
 
 //正确
-func Ok(str string) *R {
+func Ok(str string) R {
+	return R{Code: http.StatusOK, Message: str}
+}
+
+//正确
+func OkPointer(str string) *R {
 	return &R{Code: http.StatusOK, Message: str}
 }
 
 //正确
-func OkData(data interface{}) *R {
+func OkData(data interface{}) R {
+	return R{Code: http.StatusOK, Message: SUCCESS_MESSAGE, Data: data}
+}
+
+//正确
+func OkDataPointer(data interface{}) *R {
 	return &R{Code: http.StatusOK, Message: SUCCESS_MESSAGE, Data: data}
 }
 
 //正确
-func OkR2(str string) (int, *R) {
+func OkR2(str string) (int, R) {
+	return http.StatusOK, R{Code: http.StatusOK, Message: str}
+}
+
+//正确
+func OkR2Pointer(str string) (int, *R) {
 	return http.StatusOK, &R{Code: http.StatusOK, Message: str}
 }
 
 //错误
-func ErrorDefault() *R {
+func ErrorDefault() R {
+	return R{Code: http.StatusInternalServerError, Message: ERROR_MESSAGE}
+}
+
+//错误
+func ErrorDefaultPointer() *R {
 	return &R{Code: http.StatusInternalServerError, Message: ERROR_MESSAGE}
 }
 
 //错误
-func Error(str string) *R {
+func Error(str string) R {
+	return R{Code: http.StatusInternalServerError, Message: str}
+}
+
+//错误
+func ErrorPointer(str string) *R {
 	return &R{Code: http.StatusInternalServerError, Message: str}
 }
 
 //错误
-func ErrorR2(str string) (int, *R) {
+func ErrorR2(str string) (int, R) {
+	return http.StatusInternalServerError, R{Code: http.StatusInternalServerError, Message: str}
+}
+
+//错误
+func ErrorR2Pointer(str string) (int, *R) {
 	return http.StatusInternalServerError, &R{Code: http.StatusInternalServerError, Message: str}
 }
 
 //非法参数
-func IllegalArgument(str string) *R {
+func IllegalArgument(str string) R {
+	return R{Code: http.StatusUnsupportedMediaType, Message: str}
+}
+
+//非法参数
+func IllegalArgumentPointer(str string) *R {
 	return &R{Code: http.StatusUnsupportedMediaType, Message: str}
 }
 
 //非法参数
-func IllegalArgumentR2(str string) (int, *R) {
+func IllegalArgumentR2(str string) (int, R) {
+	return http.StatusUnsupportedMediaType, R{Code: http.StatusUnsupportedMediaType, Message: str}
+}
+
+//非法参数
+func IllegalArgumentR2Pointer(str string) (int, *R) {
 	return http.StatusUnsupportedMediaType, &R{Code: http.StatusUnsupportedMediaType, Message: str}
 }
 
 //新数据
-func Wrap(code int, str string) *R {
+func Wrap(code int, str string) R {
+	return R{Code: code, Message: str}
+}
+
+//新数据
+func WrapPointer(code int, str string) *R {
 	return &R{Code: code, Message: str}
 }
 
 //新数据
-func WrapR2(code int, str string) (int, *R) {
+func WrapR2(code int, str string) (int, R) {
+	return code, R{Code: code, Message: str}
+}
+
+//新数据
+func WrapR2Pointer(code int, str string) (int, *R) {
 	return code, &R{Code: code, Message: str}
 }
 
 //新数据
-func WrapData(code int, str string, data interface{}) *R {
+func WrapData(code int, str string, data interface{}) R {
+	return R{Code: code, Message: str, Data: data}
+}
+
+//新数据
+func WrapDataPointer(code int, str string, data interface{}) *R {
 	return &R{Code: code, Message: str, Data: data}
 }
 
 //新数据
-func WrapDataR2(code int, str string, data interface{}) (int, *R) {
+func WrapDataR2(code int, str string, data interface{}) (int, R) {
+	return code, R{Code: code, Message: str, Data: data}
+}
+
+//新数据
+func WrapDataR2Pointer(code int, str string, data interface{}) (int, *R) {
 	return code, &R{Code: code, Message: str, Data: data}
 }
 
@@ -80,16 +145,31 @@ func NewR() *R {
 }
 
 //是否正确
-func (c *R) CodeSuccess() bool {
+func (c R) CodeSuccess() bool {
 	return c.Code == http.StatusOK
 }
 
 //是否错误
-func (c *R) CodeError() bool {
+func (c R) CodeError() bool {
 	return c.Code == http.StatusInternalServerError
 }
 
 //返回结构体
-func (c *R) ResultR2() (int, *R) {
+func (c R) ResultR2() (int, R) {
+	return c.Code, c
+}
+
+//是否正确
+func (c *R) CodeSuccessPointer() bool {
+	return c.Code == http.StatusOK
+}
+
+//是否错误
+func (c *R) CodeErrorPointer() bool {
+	return c.Code == http.StatusInternalServerError
+}
+
+//返回结构体
+func (c *R) ResultR2Pointer() (int, *R) {
 	return c.Code, c
 }
