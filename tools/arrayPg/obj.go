@@ -5,6 +5,7 @@ import (
 	"github.com/pangu-2/go-tools/tools"
 )
 
+// ObjToMap
 // 函　数：Obj2map
 // 概　要：
 // 参　数：
@@ -26,7 +27,7 @@ func ObjToMap(obj interface{}) (mapObj map[string]interface{}, err error) {
 	return result, nil
 }
 
-//JSON格式数据转换为map
+// StrToMap JSON格式数据转换为map
 func StrToMap(str string) (mapObj map[string]interface{}, err error) {
 	// 结构体转json
 	if str == "" {

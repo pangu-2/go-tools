@@ -4,7 +4,7 @@ import (
 	"github.com/pangu-2/go-tools/tools"
 )
 
-//slice翻转
+//StringReverse slice翻转
 func StringReverse(src []string) error {
 	if src == nil {
 		//panic(fmt.Errorf("the src can't be empty!"))
@@ -24,7 +24,7 @@ func StringReverse(src []string) error {
 	return nil
 }
 
-//判断是否包含
+// SliceContains 判断是否包含
 func SliceContains(src []string, value string) bool {
 	isContain := false
 	for _, srcValue := range src {
@@ -36,7 +36,7 @@ func SliceContains(src []string, value string) bool {
 	return isContain
 }
 
-//判断key是否存在
+// MapContains 判断key是否存在
 func MapContains(src map[string]int, key string) bool {
 	if _, ok := src[key]; ok {
 		return true
