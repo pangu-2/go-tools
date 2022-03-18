@@ -1,7 +1,7 @@
 package userUtil
 
 import (
-	"github.com/liangzibo/go-tools/tools/cryptUtil"
+	"github.com/pangu-2/go-tools/tools/cryptUtil"
 )
 
 // encrypt password

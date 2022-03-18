@@ -1,7 +1,7 @@
 package arrayUtil
 
 import (
-	"github.com/liangzibo/go-tools/tools"
+	"github.com/pangu-2/go-tools/tools"
 )
 
 //slice翻转
@@ -17,17 +17,18 @@ func StringReverse(src []string) error {
 	mid := count / 2
 	for i := 0; i < mid; i++ {
 		tmp := src[i]
-		src[i] = src[count - 1]
-		src[count - 1] = tmp
+		src[i] = src[count-1]
+		src[count-1] = tmp
 		count--
 	}
 	return nil
 }
+
 //判断是否包含
 func SliceContains(src []string, value string) bool {
 	isContain := false
 	for _, srcValue := range src {
-		if (srcValue == value) {
+		if srcValue == value {
 			isContain = true
 			break
 		}

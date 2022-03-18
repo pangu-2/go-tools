@@ -2,7 +2,7 @@ package strUtil
 
 import (
 	"fmt"
-	"github.com/liangzibo/go-tools/tools/datetimeUtil"
+	"github.com/pangu-2/go-tools/tools/datetimeUtil"
 	"math"
 	"os"
 	"strconv"

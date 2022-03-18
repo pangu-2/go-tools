@@ -1,2 +1,4 @@
 github.com/gokits/gotools v1.0.0 h1:U6GdTLnXNjWOaaph9zJZcbToemuhb+aI0dumMVZWSfo=
 github.com/gokits/gotools v1.0.0/go.mod h1:ctg3o/cnPcKVMFsuI4t3b8dfLkppsjbQ9JNHkTWH3I8=
+github.com/thedevsaddam/gojsonq/v2 v2.5.2 h1:CoMVaYyKFsVj6TjU6APqAhAvC07hTI6IQen8PHzHYY0=
+github.com/thedevsaddam/gojsonq/v2 v2.5.2/go.mod h1:bv6Xa7kWy82uT0LnXPE2SzGqTj33TAEeR560MdJkiXs=

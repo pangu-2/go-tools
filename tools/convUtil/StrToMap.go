@@ -2,7 +2,7 @@ package convUtil
 
 import (
 	"encoding/json"
-	"github.com/liangzibo/go-tools/tools"
+	"github.com/pangu-2/go-tools/tools"
 )
 
 //JSON格式数据转换为map
