@@ -1,9 +1,13 @@
 package strPg
 
 import (
+	gonanoid "github.com/matoous/go-nanoid/v2"
 	"math/rand"
 	"time"
 )
+
+const DEFAULT_ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+const DEFAULT_ALPHABET_0 = "_-0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 // randseed
 func GetRand() *rand.Rand {
@@ -47,4 +51,16 @@ func GetRandomString2(l int) string {
 		result = append(result, bytes[r.Intn(len(bytes))])
 	}
 	return string(result)
+}
+
+// GetNanoid 生成随机字符串 gonanoid
+func GetNanoid(l int) string {
+	id := gonanoid.MustGenerate(DEFAULT_ALPHABET, 32)
+	return id
+}
+
+// GetNanoidGenerate 生成随机字符串 gonanoid
+func GetNanoidGenerate(alphabet string, l int) string {
+	id := gonanoid.MustGenerate(alphabet, 32)
+	return id
 }

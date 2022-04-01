@@ -5,6 +5,7 @@ import (
 )
 
 func IntPtrTo64(ptr interface{}) (value int64) {
+	// v.Kind() == reflect.Ptr 参数为指针时:
 	if v := reflect.ValueOf(ptr); v.Kind() == reflect.Ptr {
 		p := v.Elem()
 		switch p.Kind() {

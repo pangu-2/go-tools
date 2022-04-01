@@ -5,8 +5,8 @@ import (
 	"github.com/pangu-2/go-tools/tools"
 )
 
-//obj 反序列化为字符串
-func ObjToJson(v interface{}) (string, error) {
+//ObjToJson obj 反序列化为字符串
+func ObjToJson(v any) (string, error) {
 	str, err := json.Marshal(v)
 	if err != nil {
 		//fmt.Println("序列化失败:", err)

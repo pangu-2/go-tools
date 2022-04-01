@@ -2,7 +2,6 @@ package arrayPg
 
 import (
 	"encoding/json"
-	"github.com/pangu-2/go-tools/tools"
 )
 
 // ObjToMap
@@ -13,29 +12,14 @@ import (
 // 返回值：
 //      mapObj: map对象
 //      err: 错误
-func ObjToMap(obj interface{}) (mapObj map[string]interface{}, err error) {
+func ObjToMap(obj any) (mapObj map[string]interface{}, err error) {
 	// 结构体转json
 	b, err := json.Marshal(obj)
 	if err != nil {
 		return nil, err
 	}
-
-	var result map[string]interface{}
-	if err := json.Unmarshal(b, &result); err != nil {
+	if err := json.Unmarshal(b, &mapObj); err != nil {
 		return nil, err
 	}
-	return result, nil
-}
-
-// StrToMap JSON格式数据转换为map
-func StrToMap(str string) (mapObj map[string]interface{}, err error) {
-	// 结构体转json
-	if str == "" {
-		return nil, tools.NewError("字符串为空不能转换")
-	}
-	var result map[string]interface{}
-	if err := json.Unmarshal([]byte(str), &result); err != nil {
-		return nil, err
-	}
-	return result, nil
+	return mapObj, nil
 }

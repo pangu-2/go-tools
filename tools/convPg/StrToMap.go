@@ -5,7 +5,7 @@ import (
 	"github.com/pangu-2/go-tools/tools"
 )
 
-//JSON格式数据转换为map
+//StrToMap JSON格式数据转换为map
 func StrToMap(str string) (mapObj map[string]interface{}, err error) {
 	// 结构体转json
 	if str == "" {
