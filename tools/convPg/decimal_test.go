@@ -2,8 +2,9 @@ package convPg
 
 import (
 	"fmt"
-	"github.com/shopspring/decimal"
 	"testing"
+
+	"github.com/shopspring/decimal"
 )
 
 func TestSumFloat64List(t *testing.T) {
@@ -31,4 +32,8 @@ func TestSumFloat64List(t *testing.T) {
 	// Round() 可以进行四舍五入
 	s := decimal.NewFromFloat(5.45).Round(1).String() // output: "5.5"
 	fmt.Println(s)
+
+	XX, err := decimal.NewFromString("121313131312312.1231234234232453242")
+	fmt.Println(XX)
+	fmt.Println(err)
 }
