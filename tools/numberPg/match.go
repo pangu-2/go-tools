@@ -1,5 +1,6 @@
 package numberPg
 
+// pow 次方
 func pow(x, n int) int {
 	ret := 1 // 结果初始为0次方的值，整数0次方为1。如果是矩阵，则为单元矩阵。
 	for n != 0 {
