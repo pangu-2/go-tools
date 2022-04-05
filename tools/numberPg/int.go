@@ -6,6 +6,11 @@ import (
 	"github.com/pangu-2/go-tools/tools/convPg"
 )
 
+//IsInt0 检测 是否为0
+func IsInt0(val int) bool {
+	return 0 == val
+}
+
 //此处只记录 转换方式，并不使用
 //
 //数字变成字符串
