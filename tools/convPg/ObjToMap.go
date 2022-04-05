@@ -16,9 +16,8 @@ func ObjToMap(obj any) (mapObj map[string]interface{}, err error) {
 		return nil, err
 	}
 
-	var result map[string]interface{}
-	if err := json.Unmarshal(b, &result); err != nil {
+	if err := json.Unmarshal(b, &mapObj); err != nil {
 		return nil, err
 	}
-	return result, nil
+	return mapObj, nil
 }
