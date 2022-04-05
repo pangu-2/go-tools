@@ -5,10 +5,10 @@ import (
 )
 
 func IntPtrTo64(ptr interface{}) (value int64) {
-	// v.Kind() == reflect.Ptr 参数为指针时:
-	if v := reflect.ValueOf(ptr); v.Kind() == reflect.Ptr {
-		p := v.Elem()
-		switch p.Kind() {
+	// rv.Kind() == reflect.Ptr 参数为指针时:
+	if rv := reflect.ValueOf(ptr); rv.Kind() == reflect.Ptr {
+		re := rv.Elem()
+		switch re.Kind() {
 		case reflect.Int:
 			value = int64(*ptr.(*int))
 		case reflect.Int8:
@@ -25,9 +25,9 @@ func IntPtrTo64(ptr interface{}) (value int64) {
 }
 
 func UintPtrTo64(ptr interface{}) (value uint64) {
-	if v := reflect.ValueOf(ptr); v.Kind() == reflect.Ptr {
-		p := v.Elem()
-		switch p.Kind() {
+	if rv := reflect.ValueOf(ptr); rv.Kind() == reflect.Ptr {
+		re := rv.Elem()
+		switch re.Kind() {
 		case reflect.Uint:
 			value = uint64(*ptr.(*uint))
 		case reflect.Uint8:

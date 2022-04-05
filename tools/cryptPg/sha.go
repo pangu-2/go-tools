@@ -7,8 +7,8 @@ import (
 	"encoding/hex"
 )
 
-func Sha1(v string) string {
-	d := []byte(v)
+func Sha1(val string) string {
+	d := []byte(val)
 	m := sha1.New()
 	m.Write(d)
 	//Sum()对hash.Hash对象内部存储的内容进行校验计算，然后将其追加到data的后面形成一个新的byte切片，所以一般需要将data设为nil
@@ -28,8 +28,8 @@ func Sha1(v string) string {
 //	return fmt.Sprintf("%x", h.Sum(nil))
 //}
 
-func Sha256(v string) string {
-	d := []byte(v)
+func Sha256(val string) string {
+	d := []byte(val)
 	m := sha256.New()
 	m.Write(d)
 	//Sum()对hash.Hash对象内部存储的内容进行校验计算，然后将其追加到data的后面形成一个新的byte切片，所以一般需要将data设为nil
@@ -37,8 +37,8 @@ func Sha256(v string) string {
 	return hex.EncodeToString(m.Sum(nil))
 }
 
-func Sha512(v string) string {
-	d := []byte(v)
+func Sha512(val string) string {
+	d := []byte(val)
 	m := sha512.New()
 	m.Write(d)
 	//Sum()对hash.Hash对象内部存储的内容进行校验计算，然后将其追加到data的后面形成一个新的byte切片，所以一般需要将data设为nil
@@ -46,8 +46,8 @@ func Sha512(v string) string {
 	return hex.EncodeToString(m.Sum(nil))
 }
 
-func Sha5122(v string) string {
-	d := []byte(v)
+func Sha5122(val string) string {
+	d := []byte(val)
 	m := sha1.New()
 	m.Write(d)
 	//Sum()对hash.Hash对象内部存储的内容进行校验计算，然后将其追加到data的后面形成一个新的byte切片，所以一般需要将data设为nil

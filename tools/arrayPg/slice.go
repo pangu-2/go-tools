@@ -1,10 +1,12 @@
 package arrayPg
 
+import "reflect"
+
 // SliceContainsString 判断是否包含
-func SliceContainsString(src []string, value string) bool {
+func SliceContainsString(src []string, val string) bool {
 	isContain := false
 	for _, srcValue := range src {
-		if srcValue == value {
+		if srcValue == val {
 			isContain = true
 			break
 		}
@@ -70,4 +72,20 @@ func SliceContainsInt8(src []int8, value int8) bool {
 		}
 	}
 	return isContain
+}
+
+//IsSliceType 类型
+func IsSliceType(val interface{}) bool {
+	var (
+		rv = reflect.ValueOf(val)
+		rk = rv.Kind()
+	)
+	for rk == reflect.Ptr {
+		rv = rv.Elem()
+	}
+	switch rk {
+	case reflect.Slice, reflect.Array:
+		return true
+	}
+	return false
 }

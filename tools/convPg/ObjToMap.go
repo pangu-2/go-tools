@@ -2,7 +2,7 @@ package convPg
 
 import "encoding/json"
 
-//ObjToMap  函　数：Obj2map
+//ObjToMap  函　数：ObjToMap
 // 概　要：
 // 参　数：
 //      obj: 传入Obj

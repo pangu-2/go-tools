@@ -77,3 +77,21 @@ func StrToIntFormInterface(str interface{}) int {
 	i, _ := strconv.Atoi(str.(string))
 	return i
 }
+
+//IsIntType 类型
+func IsIntType(value interface{}) bool {
+	switch value.(type) {
+	case int, *int, int8, *int8, int16, *int16, int32, *int32, int64, *int64:
+		return true
+	}
+	return false
+}
+
+//IsUintType 类型
+func IsUintType(value interface{}) bool {
+	switch value.(type) {
+	case uint, *uint, uint8, *uint8, uint16, *uint16, uint32, *uint32, uint64, *uint64:
+		return true
+	}
+	return false
+}

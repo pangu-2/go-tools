@@ -14,3 +14,12 @@ func IsFloatGt320(val float32) bool {
 func IsFloatGt640(val float64) bool {
 	return 0 < val
 }
+
+//IsFloatType 类型
+func IsFloatType(value interface{}) bool {
+	switch value.(type) {
+	case float32, *float32, float64, *float64:
+		return true
+	}
+	return false
+}
