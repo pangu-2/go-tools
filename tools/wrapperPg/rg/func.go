@@ -1,4 +1,4 @@
-package rs
+package rg
 
 type Option[T any] func(c Rs[T])
 type OptionPointer[T any] func(c *Rs[T])

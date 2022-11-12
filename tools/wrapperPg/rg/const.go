@@ -1,4 +1,4 @@
-package rs
+package rg
 
 const (
 	SUCCESS_MESSAGE               = "操作成功"

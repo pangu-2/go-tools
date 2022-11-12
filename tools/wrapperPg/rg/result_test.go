@@ -1,4 +1,4 @@
-package rs
+package rg
 
 import (
 	"fmt"

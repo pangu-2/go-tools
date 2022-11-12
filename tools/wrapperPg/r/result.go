@@ -27,8 +27,13 @@ func (c R) ErrorIs() bool {
 }
 
 // 返回结构体
-func (c R) ResultR2() (string, R) {
+func (c R) R2String() (string, R) {
 	return c.Code, c
+}
+
+// 返回结构体
+func (c R) R2Bool() (bool, R) {
+	return c.SuccessIs(), c
 }
 
 // 返回结构体
@@ -78,6 +83,11 @@ func (c *R) ErrorIsPointer() bool {
 }
 
 // 返回结构体
-func (c *R) ResultR2Pointer() (string, *R) {
+func (c *R) R2PointerString() (string, *R) {
 	return c.Code, c
+}
+
+// 返回结构体
+func (c *R) R2PointerBool() (bool, *R) {
+	return c.SuccessIsPointer(), c
 }

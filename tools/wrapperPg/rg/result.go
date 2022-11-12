@@ -1,4 +1,4 @@
-package rs
+package rg
 
 type Rs[T any | interface{}] struct {
 	Code       string                 `json:"code"`                 // 代码
@@ -21,8 +21,18 @@ func (c Rs[T]) ErrorIs() bool {
 }
 
 // 返回结构体
-func (c Rs[T]) ResultRs2() (string, Rs[T]) {
+func (c Rs[T]) Rs2String() (string, Rs[T]) {
 	return c.Code, c
+}
+
+// 返回结构体
+func (c Rs[T]) Rs2Bool() (bool, Rs[T]) {
+	return c.SuccessIs(), c
+}
+
+// 返回结构体
+func (c Rs[T]) Rs2() (bool, Rs[T]) {
+	return c.Rs2Bool()
 }
 
 // 返回结构体
@@ -62,16 +72,26 @@ func (c Rs[T]) Wrap(code string, message string, data T) Rs[T] {
 }
 
 // 是否正确
-func (c *Rs[T]) SuccessPointer() bool {
+func (c *Rs[T]) SuccessIsPointer() bool {
 	return c.Code == SUCCESS_CODE
 }
 
 // 是否错误
-func (c *Rs[T]) ErrorPointer() bool {
+func (c *Rs[T]) ErrorIsPointer() bool {
 	return c.Code == ERROR_CODE
 }
 
 // 返回结构体
-func (c *Rs[T]) ResultRsPointer() (string, *Rs[T]) {
+func (c *Rs[T]) Rs2PointerString() (string, *Rs[T]) {
 	return c.Code, c
+}
+
+// 返回结构体
+func (c *Rs[T]) Rs2PointerBool() (bool, *Rs[T]) {
+	return c.SuccessIsPointer(), c
+}
+
+// 返回结构体
+func (c *Rs[T]) Rs2Pointer() (bool, *Rs[T]) {
+	return c.Rs2PointerBool()
 }
