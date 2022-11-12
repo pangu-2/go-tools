@@ -51,6 +51,21 @@ func (c R) OkData(d interface{}) R {
 }
 
 // 返回结构体
+func (c R) OkMessage(msg string) R {
+	c.Ok()
+	c.Message = msg
+	return c
+}
+
+// 返回结构体
+func (c R) OkMessageData(msg string, data interface{}) R {
+	c.Ok()
+	c.Message = msg
+	c.Data = data
+	return c
+}
+
+// 返回结构体
 func (c R) Error() R {
 	c.Code = ERROR_CODE
 	c.Message = ERROR_MESSAGE
@@ -61,6 +76,13 @@ func (c R) Error() R {
 func (c R) ErrorData(d interface{}) R {
 	c.Error()
 	c.Data = d
+	return c
+}
+
+// 返回结构体
+func (c R) ErrorMessage(msg string) R {
+	c.Error()
+	c.Message = msg
 	return c
 }
 
@@ -83,11 +105,19 @@ func (c *R) ErrorIsPointer() bool {
 }
 
 // 返回结构体
-func (c *R) R2PointerString() (string, *R) {
+func (c *R) R2StringPointer() (string, *R) {
 	return c.Code, c
 }
 
 // 返回结构体
-func (c *R) R2PointerBool() (bool, *R) {
+func (c *R) R2BoolPointer() (bool, *R) {
 	return c.SuccessIsPointer(), c
+}
+
+// 返回结构体
+func (c *R) OkMessageDataPointer(msg string, data interface{}) *R {
+	c.Ok()
+	c.Message = msg
+	c.Data = data
+	return c
 }

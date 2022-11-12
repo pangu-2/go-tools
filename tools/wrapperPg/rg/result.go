@@ -50,6 +50,21 @@ func (c Rs[T]) OkData(data T) Rs[T] {
 }
 
 // 返回结构体
+func (c Rs[T]) OkMessage(msg string) Rs[T] {
+	c.Ok()
+	c.Message = msg
+	return c
+}
+
+// 返回结构体
+func (c Rs[T]) OkMessageData(msg string, data T) Rs[T] {
+	c.Ok()
+	c.Message = msg
+	c.Data = data
+	return c
+}
+
+// 返回结构体
 func (c Rs[T]) Error() Rs[T] {
 	c.Code = ERROR_CODE
 	c.Message = ERROR_MESSAGE
@@ -60,6 +75,13 @@ func (c Rs[T]) Error() Rs[T] {
 func (c Rs[T]) ErrorData(data T) Rs[T] {
 	c.Error()
 	c.Data = data
+	return c
+}
+
+// 返回结构体
+func (c Rs[T]) ErrorMessage(msg string) Rs[T] {
+	c.Error()
+	c.Message = msg
 	return c
 }
 
@@ -82,16 +104,23 @@ func (c *Rs[T]) ErrorIsPointer() bool {
 }
 
 // 返回结构体
-func (c *Rs[T]) Rs2PointerString() (string, *Rs[T]) {
+func (c *Rs[T]) Rs2StringPointer() (string, *Rs[T]) {
 	return c.Code, c
 }
 
 // 返回结构体
-func (c *Rs[T]) Rs2PointerBool() (bool, *Rs[T]) {
+func (c *Rs[T]) Rs2BoolPointer() (bool, *Rs[T]) {
 	return c.SuccessIsPointer(), c
 }
 
 // 返回结构体
 func (c *Rs[T]) Rs2Pointer() (bool, *Rs[T]) {
-	return c.Rs2PointerBool()
+	return c.Rs2BoolPointer()
+}
+
+// 返回结构体
+func (c *Rs[T]) ErrorMessagePointer(msg string) *Rs[T] {
+	c.Error()
+	c.Message = msg
+	return c
 }
