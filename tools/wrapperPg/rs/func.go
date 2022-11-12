@@ -1,14 +1,4 @@
-package Rs
-
-type Rs[T any] struct {
-	Code       string                 `json:"code"`                 // 代码
-	Message    string                 `json:"message"`              // 信息
-	Data       T                      `json:"data"`                 // 数据
-	Encryption interface{}            `json:"encryption,omitempty"` // 加密数据
-	Type       string                 `json:"type,omitempty"`       // 类型
-	Timestamp  string                 `json:"timestamp,omitempty"`  // 时间戳
-	Extend     map[string]interface{} `json:"extend,omitempty"`     // 其他数据
-}
+package rs
 
 type Option[T any] func(c Rs[T])
 type OptionPointer[T any] func(c *Rs[T])
@@ -85,22 +75,22 @@ func ErrorR2Pointer[T any](str string) (string, *Rs[T]) {
 
 // 非法参数
 func IllegalArgument[T any](str string) Rs[T] {
-	return Rs[T]{Code: ILLEGAL_ARGUMENT_CODE_, Message: str}
+	return Rs[T]{Code: ILLEGAL_ARGUMENT_CODE, Message: str}
 }
 
 // 非法参数
 func IllegalArgumentPointer[T any](str string) *Rs[T] {
-	return &Rs[T]{Code: ILLEGAL_ARGUMENT_CODE_, Message: str}
+	return &Rs[T]{Code: ILLEGAL_ARGUMENT_CODE, Message: str}
 }
 
 // 非法参数
 func IllegalArgumentR2[T any](str string) (string, Rs[T]) {
-	return ILLEGAL_ARGUMENT_CODE_, Rs[T]{Code: ILLEGAL_ARGUMENT_CODE_, Message: str}
+	return ILLEGAL_ARGUMENT_CODE, Rs[T]{Code: ILLEGAL_ARGUMENT_CODE, Message: str}
 }
 
 // 非法参数
 func IllegalArgumentR2Pointer[T any](str string) (string, *Rs[T]) {
-	return ILLEGAL_ARGUMENT_CODE_, &Rs[T]{Code: ILLEGAL_ARGUMENT_CODE_, Message: str}
+	return ILLEGAL_ARGUMENT_CODE, &Rs[T]{Code: ILLEGAL_ARGUMENT_CODE, Message: str}
 }
 
 // 新数据
@@ -158,34 +148,4 @@ func Of[T any](options ...Option[T]) Rs[T] {
 		option(opts)
 	}
 	return opts
-}
-
-// 是否正确
-func (c Rs[T]) CodeSuccess() bool {
-	return c.Code == SUCCESS_CODE
-}
-
-// 是否错误
-func (c Rs[T]) CodeError() bool {
-	return c.Code == ERROR_CODE
-}
-
-// 返回结构体
-func (c Rs[T]) ResultR2() (string, Rs[T]) {
-	return c.Code, c
-}
-
-// 是否正确
-func (c *Rs[T]) CodeSuccessPointer() bool {
-	return c.Code == SUCCESS_CODE
-}
-
-// 是否错误
-func (c *Rs[T]) CodeErrorPointer() bool {
-	return c.Code == ERROR_CODE
-}
-
-// 返回结构体
-func (c *Rs[T]) ResultR2Pointer() (string, *Rs[T]) {
-	return c.Code, c
 }
