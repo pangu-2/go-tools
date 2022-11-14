@@ -114,22 +114,22 @@ func WrapR2Pointer[T any](code string, str string) (string, *Rs[T]) {
 }
 
 // 新数据
-func WrapData[T any](code string, str string, data interface{}) Rs[T] {
+func WrapData[T any](code string, str string, data T) Rs[T] {
 	return Rs[T]{Code: code, Message: str, Data: data}
 }
 
 // 新数据
-func WrapDataPointer[T any](code string, str string, data interface{}) *Rs[T] {
+func WrapDataPointer[T any](code string, str string, data T) *Rs[T] {
 	return &Rs[T]{Code: code, Message: str, Data: data}
 }
 
 // 新数据
-func WrapDataR2[T any](code string, str string, data interface{}) (string, Rs[T]) {
+func WrapDataR2[T any](code string, str string, data T) (string, Rs[T]) {
 	return code, Rs[T]{Code: code, Message: str, Data: data}
 }
 
 // 新数据
-func WrapDataR2Pointer[T any](code string, str string, data interface{}) (string, *Rs[T]) {
+func WrapDataR2Pointer[T any](code string, str string, data T) (string, *Rs[T]) {
 	return code, &Rs[T]{Code: code, Message: str, Data: data}
 }
 
