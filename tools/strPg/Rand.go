@@ -8,6 +8,7 @@ import (
 
 const DEFAULT_ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 const DEFAULT_ALPHABET_0 = "_-0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+const DEFAULT_Number = "0123456789"
 
 // randseed
 func GetRand() *rand.Rand {
@@ -28,8 +29,8 @@ const (
 	SALT = "$^*#,.><)(_+f*m"
 )
 
-//生成 数字和小写字母
-//https://blog.csdn.net/qq948993066/article/details/77368971
+// 生成 数字和小写字母
+// https://blog.csdn.net/qq948993066/article/details/77368971
 func GetRandomString(l int) string {
 	str := "0123456789abcdefghijklmnopqrstuvwxyz"
 	bytes := []byte(str)
@@ -41,7 +42,7 @@ func GetRandomString(l int) string {
 	return string(result)
 }
 
-//生成随机字符串
+// 生成随机字符串
 func GetRandomString2(l int) string {
 	str := "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	bytes := []byte(str)
@@ -55,12 +56,18 @@ func GetRandomString2(l int) string {
 
 // GetNanoid 生成随机字符串 gonanoid
 func GetNanoid(l int) string {
-	id := gonanoid.MustGenerate(DEFAULT_ALPHABET, 32)
+	id := gonanoid.MustGenerate(DEFAULT_ALPHABET, l)
 	return id
 }
 
 // GetNanoidGenerate 生成随机字符串 gonanoid
 func GetNanoidGenerate(alphabet string, l int) string {
-	id := gonanoid.MustGenerate(alphabet, 32)
+	id := gonanoid.MustGenerate(alphabet, l)
+	return id
+}
+
+// GetNanoIdNumber 生成随机数值串
+func GetNanoIdNumber(l int) string {
+	id := gonanoid.MustGenerate(DEFAULT_Number, l)
 	return id
 }

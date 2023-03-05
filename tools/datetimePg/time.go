@@ -11,6 +11,9 @@ const (
 	Y_M_D               = "2006-01-02"
 	Y_M_D_2             = "2006年01月02日"
 	YMDHIS              = "20060102150405"
+	YMDHIS2             = "060102150405"
+	YMDHIS_SSS          = "20060102150405.000"
+	YMDHIS_SSS2         = "060102150405.000"
 	Y_M_D_H_I_S         = "2006-01-02 15:04:05"
 	Y_M_D_H_I_S_CST     = "2006-01-02 15:04:05 +0800 CST" //2016-12-04 15:39:06 +0800 CST
 	Y_M_D_H_I_S_RFC3339 = "2006-01-02T15:04:05Z07:00"
@@ -19,7 +22,7 @@ const (
 	HIS                 = "150405"
 )
 
-//格式
+// 格式
 func Format(str interface{}, layout string) string {
 	date, err := FormatTimeStruct(str, layout)
 	if err != nil {
@@ -32,7 +35,7 @@ func Format(str interface{}, layout string) string {
 	return date.Format(layout)
 }
 
-//格式
+// 格式
 func FormatTimeStruct(str interface{}, layout string) (time.Time, error) {
 	var date time.Time
 	var err error
@@ -51,7 +54,7 @@ func FormatTimeStruct(str interface{}, layout string) (time.Time, error) {
 	return date, nil
 }
 
-//格式
+// 格式
 func FormatTimeStructLocation(str interface{}, layout string) (time.Time, error) {
 	var date time.Time
 	var err error
@@ -71,52 +74,52 @@ func FormatTimeStructLocation(str interface{}, layout string) (time.Time, error)
 	return date, nil
 }
 
-//当前日期时间
+// 当前日期时间
 func Now() string {
 	return Format(time.Now(), Y_M_D_H_I_S)
 }
 
-//当前日期时间
+// 当前日期时间
 func NowNotFormat() string {
 	return Format(time.Now(), YMDHIS)
 }
 
-//当前日期
+// 当前日期
 func Date() string {
 	return Format(time.Now(), Y_M_D)
 }
 
-//当前时间
+// 当前时间
 func Time() string {
 	return Format(time.Now(), H_I_S)
 }
 
-//当前时间
+// 当前时间
 func TimeHis() string {
 	return Format(time.Now(), HIS)
 }
 
-//当前年月
+// 当前年月
 func YearMonth() string {
 	return Format(time.Now(), Y_M)
 }
 
-//时间格式化
+// 时间格式化
 func TimeFormatByYmdHms(year int, month time.Month, day, hour, min, sec int) time.Time {
 	return time.Date(year, month, day, hour, min, sec, 0, time.Local)
 }
 
-//当前年月日
+// 当前年月日
 func NowYearMonthDay() (year int, month time.Month, day int) {
 	return time.Now().Date()
 }
 
-//当前时分秒
+// 当前时分秒
 func NowHourMinSec() (hour, min, sec int) {
 	return time.Now().Clock()
 }
 
-//输出当前日期是星期几
+// 输出当前日期是星期几
 func Weekday() string {
 	return time.Now().Weekday().String()
 }
@@ -133,7 +136,7 @@ func ISOWeekStart(t time.Time) time.Time {
 	return t.AddDate(0, 0, offset)
 }
 
-//指定日期是年中的第几天
+// 指定日期是年中的第几天
 func GetDaysInYear(t string) int {
 	now, _ := FormatTimeStruct(t, Y_M_D)
 	total := 0
@@ -152,7 +155,7 @@ func GetDaysInYear(t string) int {
 	return total
 }
 
-//年中的第几天
+// 年中的第几天
 func GetDaysInYearByThisYear() int {
 	return GetDaysInYear(Date())
 }

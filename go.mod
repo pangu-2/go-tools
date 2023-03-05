@@ -1,6 +1,6 @@
 module github.com/pangu-2/go-tools
 
-go 1.18
+go 1.19
 
 require (
 	github.com/gokits/gotools v1.0.0
