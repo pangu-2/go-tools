@@ -200,4 +200,5 @@ func GenerateUnixIdIntMoreUnique(sum int) []int64 {
 		more2 := GenerateUnixIdIntMore(sum - sumUnique)
 		idArr = slicePg.Merge(idArr, more2)
 	}
+	return idArr
 }
