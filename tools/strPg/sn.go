@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/pangu-2/go-tools/tools/convPg"
 	"github.com/pangu-2/go-tools/tools/datetimePg"
+	"github.com/pangu-2/go-tools/tools/slicePg"
 	"math"
 	"os"
 	"strconv"
@@ -146,6 +147,16 @@ func GenerateUnixId(now time.Time, len int) string {
 	return formatInt
 }
 
+// GenerateUnixIdIntString  生成linux时间戳格式id号，例子:167798942647399999
+// 格式：当前linux时间戳(10位秒数)+毫秒(3位)+随机数值(5位)
+func GenerateUnixIdIntString() int64 {
+	//13位 毫秒
+	milli := time.Now().UnixMilli()
+	formatInt := strconv.FormatInt(milli, 10)
+	//转换
+	return convPg.StrToInt64(formatInt + GetNanoIdNumber(5))
+}
+
 // GenerateUnixIdInt  生成linux时间戳格式id号，例子:167798942647399999
 // 格式：当前linux时间戳(10位秒数)+毫秒(3位)+随机数值(5位)
 func GenerateUnixIdInt() int64 {
@@ -176,4 +187,17 @@ func GenerateUnixIdIntMore(count int) []int64 {
 		slice = append(slice, convPg.StrToInt64(formatInt+idInt))
 	}
 	return slice
+}
+
+// GenerateUnixIdIntMoreUnique 生成linux时间戳格式id号，例子:167798942647399999
+func GenerateUnixIdIntMoreUnique(sum int) []int64 {
+	idArr := make([]int64, 0)
+	idArr = GenerateUnixIdIntMore(sum)
+	//去除重复的
+	idArr = slicePg.Unique(idArr)
+	sumUnique := len(idArr)
+	if sum > sumUnique {
+		more2 := GenerateUnixIdIntMore(sum - sumUnique)
+		idArr = slicePg.Merge(idArr, more2)
+	}
 }

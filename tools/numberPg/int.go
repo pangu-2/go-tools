@@ -6,19 +6,29 @@ import (
 	"github.com/pangu-2/go-tools/tools/convPg"
 )
 
-//IsInt0 检测 是否为0
+// IsInt0 检测 是否为0
 func IsInt0(val int) bool {
 	return 0 == val
 }
 
-//此处只记录 转换方式，并不使用
+//	此处只记录 转换方式，并不使用
 //
-//数字变成字符串
+// IntToString 数字变成字符串
 func IntToString(i int) string {
 	return strconv.Itoa(i)
 }
 
-//数字变成字符串
+// Int8ToString 数字变成字符串
+func Int8ToString(i int8) string {
+	return strconv.FormatInt(int64(i), 10)
+}
+
+// Int32ToString 数字变成字符串
+func Int32ToString(i int32) string {
+	return strconv.FormatInt(int64(i), 10)
+}
+
+// Int64ToString 数字变成字符串
 func Int64ToString(i int64) string {
 	return strconv.FormatInt(i, 10)
 }
@@ -43,42 +53,42 @@ func ObjToFloat32(val interface{}) float32 {
 	return convPg.ObjToFloat32(val)
 }
 
-// ObjToFloat32 转成数字
+// ObjToFloat64 转成数字
 func ObjToFloat64(val interface{}) float64 {
 	return convPg.ObjToFloat64(val)
 }
 
-//字符串转换成  int 没有错误返回
+// StrToInt 字符串转换成  int 没有错误返回
 func StrToInt(str string) int {
 	i, _ := strconv.Atoi(str)
 	return i
 }
 
-//字符串转换成  int64 没有错误返回
+// StrToInt64 字符串转换成  int64 没有错误返回
 func StrToInt64(str string) int64 {
 	i, _ := strconv.ParseInt(str, 10, 64)
 	return i
 }
 
-//字符串转换成  float64 没有错误返回
+// StrToFloat64 字符串转换成  float64 没有错误返回
 func StrToFloat64(str string) float64 {
 	i, _ := strconv.ParseFloat(str, 64)
 	return i
 }
 
-//字符串转换成  float64 没有错误返回
+// StrToFloat64FormInterface 字符串转换成  float64 没有错误返回
 func StrToFloat64FormInterface(str interface{}) float64 {
 	i, _ := strconv.ParseFloat(str.(string), 64)
 	return i
 }
 
-//字符串转换成  int 没有错误返回
+// StrToIntFormInterface 字符串转换成  int 没有错误返回
 func StrToIntFormInterface(str interface{}) int {
 	i, _ := strconv.Atoi(str.(string))
 	return i
 }
 
-//IsIntType 类型
+// IsIntType 类型
 func IsIntType(value interface{}) bool {
 	switch value.(type) {
 	case int, *int, int8, *int8, int16, *int16, int32, *int32, int64, *int64:
@@ -87,7 +97,7 @@ func IsIntType(value interface{}) bool {
 	return false
 }
 
-//IsUintType 类型
+// IsUintType 类型
 func IsUintType(value interface{}) bool {
 	switch value.(type) {
 	case uint, *uint, uint8, *uint8, uint16, *uint16, uint32, *uint32, uint64, *uint64:
