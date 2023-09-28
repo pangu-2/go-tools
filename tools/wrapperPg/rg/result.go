@@ -44,21 +44,24 @@ func (c Rs[T]) Ok() Rs[T] {
 
 // 返回结构体
 func (c Rs[T]) OkData(data T) Rs[T] {
-	c.Ok()
+	c.Code = SUCCESS_CODE
+    c.Message = SUCCESS_MESSAGE
 	c.Data = data
 	return c
 }
 
 // 返回结构体
 func (c Rs[T]) OkMessage(msg string) Rs[T] {
-	c.Ok()
+	c.Code = SUCCESS_CODE
+    c.Message = SUCCESS_MESSAGE
 	c.Message = msg
 	return c
 }
 
 // 返回结构体
 func (c Rs[T]) OkMessageData(msg string, data T) Rs[T] {
-	c.Ok()
+	c.Code = SUCCESS_CODE
+    c.Message = SUCCESS_MESSAGE
 	c.Message = msg
 	c.Data = data
 	return c
@@ -73,14 +76,16 @@ func (c Rs[T]) Error() Rs[T] {
 
 // 返回结构体
 func (c Rs[T]) ErrorData(data T) Rs[T] {
-	c.Error()
+	c.Code = ERROR_CODE
+    c.Message = ERROR_MESSAGE
 	c.Data = data
 	return c
 }
 
 // 返回结构体
 func (c Rs[T]) ErrorMessage(msg string) Rs[T] {
-	c.Error()
+	c.Code = ERROR_CODE
+    c.Message = ERROR_MESSAGE
 	c.Message = msg
 	return c
 }
