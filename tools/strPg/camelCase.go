@@ -44,7 +44,7 @@ func (mapper GonicMapper) Obj2Table(name string) string {
 	return gonicCasedName(name)
 }
 
-//大驼峰命名
+// 大驼峰命名
 func (mapper GonicMapper) Table2Obj(name string) string {
 	newstr := make([]rune, 0)
 
@@ -100,10 +100,11 @@ var LintGonicMapper = GonicMapper{
 	"XSS":  true,
 }
 
-/**
-	小驼峰命名
- * 字符串首字母转化为大写 ios_bbbbbbbb -> iosBbbbbbbbb
-*/
+// FirstToUpper 小驼峰命名
+//
+//	@Description:
+//	@param str
+//	@return string 字符串首字母转化为大写 ios_bbbbbbbb -> iosBbbbbbbbb
 func FirstToUpper(str string) string {
 	temp := strings.Split(str, "_")
 	var upperStr string
@@ -123,10 +124,11 @@ func FirstToUpper(str string) string {
 	return temp[0] + upperStr
 }
 
-/**
-   小驼峰命名
-* 字符串首字母转化为大写 ios_bbbbbbbb -> iosBbbbbbbbb
-*/
+// LittleCamelCase 小驼峰命名
+//
+//	@Description:
+//	@param str
+//	@return string 字符串首字母转化为大写 ios_bbbbbbbb -> iosBbbbbbbbb
 func LittleCamelCase(str string) string {
 	//str = LintGonicMapper.Table2Obj(str)
 	//reg := regexp.MustCompile(`^\w{1}`)
@@ -136,10 +138,11 @@ func LittleCamelCase(str string) string {
 	return FirstToUpper(str)
 }
 
-/**
-   小驼峰命名
-* 字符串首字母转化为大写 ios_bbbbbbbb -> iosBbbbbbbbb
-*/
+// LowerCamelCase 小驼峰命名
+//
+//	@Description:
+//	@param str
+//	@return string 字符串首字母转化为大写 ios_bbbbbbbb -> iosBbbbbbbbb
 func LowerCamelCase(str string) string {
 	//str = LintGonicMapper.Table2Obj(str)
 	//reg := regexp.MustCompile(`^\w{1}`)
@@ -149,18 +152,20 @@ func LowerCamelCase(str string) string {
 	return FirstToUpper(str)
 }
 
-/**
-  大驼峰命名
-* 字符串首字母转化为大写 ios_bbbbbbbb -> IosBbbbbbbbb
-*/
+// BigCamelCase 大驼峰命名
+//
+//	@Description:
+//	@param str
+//	@return string 字符串首字母转化为大写 ios_bbbbbbbb -> IosBbbbbbbbb
 func BigCamelCase(str string) string {
 	return LintGonicMapper.Table2Obj(str)
 }
 
-/**
-  大驼峰命名
-* 字符串首字母转化为大写 ios_bbbbbbbb -> IosBbbbbbbbb
-*/
+// UpperCamelCase 大驼峰命名
+//
+//	@Description:
+//	@param str
+//	@return string 字符串首字母转化为大写 ios_bbbbbbbb -> IosBbbbbbbbb
 func UpperCamelCase(str string) string {
 	return LintGonicMapper.Table2Obj(str)
 }
