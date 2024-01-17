@@ -32,7 +32,7 @@ func IsFloatType(value interface{}) bool {
 //	@param val
 //	@return string
 func Float64ToStr(val float64) string {
-	return strconv.FormatFloat(val, 'E', -1, 64)
+	return strconv.FormatFloat(val, 'f', -1, 64)
 }
 
 // Float64ToStrPrec
@@ -42,5 +42,5 @@ func Float64ToStr(val float64) string {
 //	@param precision
 //	@return string
 func Float64ToStrPrec(val float64, precision int) string {
-	return strconv.FormatFloat(val, 'E', precision, 64)
+	return strconv.FormatFloat(val, 'f', precision, 64)
 }
