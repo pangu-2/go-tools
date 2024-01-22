@@ -1,10 +1,24 @@
 package numberPg
 
 import (
-	"strconv"
-
 	"github.com/pangu-2/go-tools/tools/convPg"
+	"regexp"
+	"strconv"
 )
+
+const PatternsInt string = "^(?:[-+]?(?:0|[1-9][0-9]*))$"
+
+// IsInt
+//
+//	@Description: 是否整数
+//	@param str
+//	@return bool
+func IsInt(str string) bool {
+	if len(str) == 0 {
+		return false
+	}
+	return regexp.MustCompile(PatternsInt).MatchString(str)
+}
 
 // IsInt0 检测 是否为0
 func IsInt0(val int) bool {

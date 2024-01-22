@@ -87,6 +87,14 @@ func (c R) ErrorMessage(msg string) R {
 }
 
 // 返回结构体
+func (c R) ErrorMessageData(msg string, data interface{}) R {
+	c.Error()
+	c.Message = msg
+	c.Data = data
+	return c
+}
+
+// 返回结构体
 func (c R) Wrap(code string, message string, data interface{}) R {
 	c.Code = code
 	c.Message = message
