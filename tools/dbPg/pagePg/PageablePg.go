@@ -23,13 +23,12 @@ type PageablePg struct {
 }
 
 func NewPageablePg(total int64, page int64, pageSize int64) PageablePg {
-	pg := PageablePg{Total: total, PageNum: page, PageSize: pageSize}
-	pg.MakePageable()
-	return pg
+	pg := &PageablePg{Total: total, PageNum: page, PageSize: pageSize}
+	return pg.MakePageable()
 }
 
 // 分页  总数，当前页，每页条数
-func (c PageablePg) MakePageable() PageablePg {
+func (c *PageablePg) MakePageable() PageablePg {
 	if c.Total == 0 {
 		c.TotalPage = 1
 	} else {
@@ -100,5 +99,18 @@ func (c PageablePg) MakePageable() PageablePg {
 			}
 		}
 	}
-	return c
+	return PageablePg{
+		Total:       c.Total,
+		PageNum:     c.PageNum,
+		TotalPage:   c.TotalPage,
+		PageSize:    c.PageSize,
+		Pages:       c.Pages,
+		FirstPage:   c.FirstPage,
+		FirstPageIs: c.FirstPageIs,
+		LastPageIs:  c.LastPageIs,
+		LastPage:    c.LastPage,
+		NextPageIs:  c.NextPageIs,
+		NextPage:    c.NextPage,
+		Offset:      c.Offset,
+	}
 }
