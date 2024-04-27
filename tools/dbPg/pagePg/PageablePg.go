@@ -33,7 +33,7 @@ func (c PageablePg) MakePageable() PageablePg {
 	if c.Total == 0 {
 		c.TotalPage = 1
 	} else {
-		c.TotalPage = int64(math.Ceil(float64(c.Total / c.PageSize))) //page总数
+		c.TotalPage = int64(math.Ceil(float64(c.Total) / float64(c.PageSize))) //page总数
 	}
 
 	//if count % pageSize > 0 {
