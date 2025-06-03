@@ -59,6 +59,11 @@ func Error[T any](str string) Rs[T] {
 }
 
 // 错误
+func ErrorMessageData[T any](str any) Rs[T] {
+	return Rs[T]{Code: ERROR_CODE, Message: ERROR_MESSAGE, MessageData: str}
+}
+
+// 错误
 func ErrorPointer[T any](str string) *Rs[T] {
 	return &Rs[T]{Code: ERROR_CODE, Message: str}
 }

@@ -1,13 +1,15 @@
 package rg
 
+// Rs 结果集
 type Rs[T any | interface{}] struct {
-	Code       string                 `json:"code"`                 // 代码
-	Message    string                 `json:"message"`              // 信息
-	Data       T                      `json:"data"`                 // 数据
-	Encryption interface{}            `json:"encryption,omitempty"` // 加密数据
-	Type       string                 `json:"type,omitempty"`       // 类型
-	Timestamp  string                 `json:"timestamp,omitempty"`  // 时间戳
-	Extend     map[string]interface{} `json:"extend,omitempty"`     // 其他数据
+	Code        string                 `json:"code"`                  // 代码
+	Message     string                 `json:"message"`               // 信息
+	MessageData any                    `json:"messageData,omitempty"` // 信息
+	Data        T                      `json:"data"`                  // 数据
+	Encryption  interface{}            `json:"encryption,omitempty"`  // 加密数据
+	Type        string                 `json:"type,omitempty"`        // 类型
+	Timestamp   string                 `json:"timestamp,omitempty"`   // 时间戳
+	Extend      map[string]interface{} `json:"extend,omitempty"`      // 其他数据
 }
 
 // 是否正确
@@ -82,20 +84,18 @@ func (c Rs[T]) ErrorData(data T) Rs[T] {
 	return c
 }
 
+func (c Rs[T]) ErrorMessageData(data any) Rs[T] {
+	c.Code = ERROR_CODE
+	c.Message = ERROR_MESSAGE
+	c.MessageData = data
+	return c
+}
+
 // 返回结构体
 func (c Rs[T]) ErrorMessage(msg string) Rs[T] {
 	c.Code = ERROR_CODE
 	c.Message = ERROR_MESSAGE
 	c.Message = msg
-	return c
-}
-
-// 返回结构体
-func (c Rs[T]) ErrorMessageData(msg string, data T) Rs[T] {
-	c.Code = ERROR_CODE
-	c.Message = ERROR_MESSAGE
-	c.Message = msg
-	c.Data = data
 	return c
 }
 
