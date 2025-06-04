@@ -30,3 +30,14 @@ func TestSn(t *testing.T) {
 	fmt.Println(count)
 	fmt.Println(GenerateUnixIdIntMore(10000))
 }
+
+func TestSn2(t *testing.T) {
+	fmt.Println(MakeNo(20))
+	//25 155 340161347063982
+	fmt.Println(GenerateNumberId22())
+	//2506041947215239997347
+	//9223372036854775808
+	//18446744073709551615   uint64 最大值
+	fmt.Println(GenerateNumberId19())
+	//2506041952171494613
+}

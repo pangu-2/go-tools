@@ -116,6 +116,18 @@ func GenerateNumberId18() int64 {
 	return convPg.StrToInt64(format)
 }
 
+// GenerateNumberId18 生成22位时间格式id号，例子:23030500105575212345678
+// 格式：年(2位)+月+日+时+分+秒+毫秒(3位)+随机数字(4位)
+func GenerateNumberId19() int64 {
+	now := time.Now()
+	format := now.Format(datetimePg.YMDHIS_SSS2)
+	format = strings.Replace(format, ".", "", -1)
+	//合并
+	format = format + GetNanoIdNumber(4)
+	//转换
+	return convPg.StrToInt64(format)
+}
+
 // GenerateNumberId 生成指定时间的n位时间格式id号，例子:2303050010557521234567
 // 格式：年(2位)+月+日+时+分+秒+毫秒(3位)+随机数字(7位)
 // 最低位数位 15位
