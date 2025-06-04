@@ -7,7 +7,7 @@ import (
 	"github.com/pangu-2/go-tools/generics"
 )
 
-//ObjToInt 变成数字
+// ObjToInt 变成数字
 func ObjToInt(val interface{}) (ret int) {
 	if nil == val {
 		return 0
@@ -57,7 +57,7 @@ func ObjToInt(val interface{}) (ret int) {
 	return ret
 }
 
-//ObjToInt32 变成数字
+// ObjToInt32 变成数字
 func ObjToInt32(val interface{}) (ret int32) {
 	if nil == val {
 		return 0
@@ -109,7 +109,7 @@ func ObjToInt32(val interface{}) (ret int32) {
 	return ret
 }
 
-//ObjToInt64 变成数字
+// ObjToInt64 变成数字
 func ObjToInt64(val interface{}) (ret int64) {
 	if nil == val {
 		return 0
@@ -161,7 +161,59 @@ func ObjToInt64(val interface{}) (ret int64) {
 	return ret
 }
 
-//ObjToFloat32 变成数字
+// ObjToUInt64 变成数字
+func ObjToUInt64(val interface{}) (ret uint64) {
+	if nil == val {
+		return 0
+	}
+	switch val.(type) {
+	case int:
+		ret = uint64(val.(int))
+	case int8:
+		ret = uint64(val.(int8))
+	case int16:
+		ret = uint64(val.(int16))
+	case int32:
+		ret = uint64(val.(int32))
+	case int64:
+		ret = uint64(val.(int64))
+
+	case uint:
+		ret = uint64(val.(uint))
+	case uint8:
+		ret = uint64(val.(uint8))
+	case uint16:
+		ret = uint64(val.(uint16))
+	case uint32:
+		ret = uint64(val.(uint32))
+	case uint64:
+		ret = val.(uint64)
+	case uintptr:
+		ret = uint64(val.(uintptr))
+	case float32:
+		ret = uint64(val.(float32))
+	case float64:
+		ret = uint64(val.(float64))
+	case bool:
+		if val.(bool) {
+			ret = 1
+		} else {
+			ret = 0
+		}
+	case string:
+		ret2, err := strconv.ParseInt(val.(string), 10, 64)
+		if err != nil {
+			ret = 0
+		} else {
+			ret = uint64(ret2)
+		}
+	default:
+		ret = 0
+	}
+	return ret
+}
+
+// ObjToFloat32 变成数字
 func ObjToFloat32(val interface{}) (ret float32) {
 	if nil == val {
 		return 0
@@ -213,7 +265,7 @@ func ObjToFloat32(val interface{}) (ret float32) {
 	return ret
 }
 
-//ObjToFloat64 变成数字
+// ObjToFloat64 变成数字
 func ObjToFloat64(val interface{}) (ret float64) {
 	if nil == val {
 		return 0
@@ -264,7 +316,7 @@ func ObjToFloat64(val interface{}) (ret float64) {
 	return ret
 }
 
-//ObjToInt onj变成数字
+// ObjToInt onj变成数字
 func ObjToInt2[T generics.Number](obj T) int {
 	of := reflect.TypeOf(obj)
 	ret := 0
@@ -281,7 +333,7 @@ func ObjToInt2[T generics.Number](obj T) int {
 	return ret
 }
 
-//ObjToInt32 obj变成数字
+// ObjToInt32 obj变成数字
 func ObjToInt322[T generics.Number](obj T) int32 {
 	of := reflect.TypeOf(obj)
 	var ret int32 = 0
@@ -298,7 +350,7 @@ func ObjToInt322[T generics.Number](obj T) int32 {
 	return ret
 }
 
-//ObjToInt64 obj变成数字
+// ObjToInt64 obj变成数字
 func ObjToInt642[T generics.Number](obj T) int64 {
 	of := reflect.TypeOf(obj)
 	var ret int64 = 0

@@ -47,6 +47,11 @@ func Int64ToString(i int64) string {
 	return strconv.FormatInt(i, 10)
 }
 
+// UInt64ToString 数字变成字符串
+func UInt64ToString(i uint64) string {
+	return strconv.FormatUint(i, 10)
+}
+
 // ObjToInt 转成数字
 func ObjToInt(val interface{}) int {
 	return convPg.ObjToInt(val)
@@ -81,6 +86,12 @@ func StrToInt(str string) int {
 // StrToInt64 字符串转换成  int64 没有错误返回
 func StrToInt64(str string) int64 {
 	i, _ := strconv.ParseInt(str, 10, 64)
+	return i
+}
+
+// StrToUInt64 字符串转换成  int64 没有错误返回
+func StrToUInt64(str string) uint64 {
+	i, _ := strconv.ParseUint(str, 10, 64)
 	return i
 }
 
