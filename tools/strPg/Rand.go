@@ -68,6 +68,5 @@ func GetNanoidGenerate(alphabet string, l int) string {
 
 // GetNanoIdNumber 生成随机数值串
 func GetNanoIdNumber(l int) string {
-	id := gonanoid.MustGenerate(DEFAULT_Number, l)
-	return id
+	return gonanoid.MustGenerate(DEFAULT_Number, l)
 }

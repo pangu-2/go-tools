@@ -56,3 +56,15 @@ func StrToInt64(str string) int64 {
 	}
 	return i
 }
+
+// StrToUint64 字符转换为 uint64
+func StrToUint64(str string) uint64 {
+	//参数1 数字的字符串形式
+	//参数2 数字字符串的进制 比如二进制 八进制 十进制 十六进制
+	//参数3 返回结果的bit大小 也就是int8 int16 int32 int64
+	i, err := strconv.ParseUint(str, 10, 64)
+	if err != nil {
+		return 0
+	}
+	return i
+}
