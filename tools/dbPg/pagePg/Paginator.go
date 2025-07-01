@@ -1,7 +1,6 @@
 package pagePg
 
 import (
-	"fmt"
 	"math"
 )
 
@@ -64,7 +63,7 @@ func Pagination(count int, page int, pageSize int) *Paginator {
 	Page.LastPage = Page.TotalPage
 	//读取起始条数
 	Page.Offset = (page - 1) * pageSize
-	fmt.Println("PageNum.TotalPage", Page.TotalPage)
+	//fmt.Println("PageNum.TotalPage", Page.TotalPage)
 	pages := make([]int, 5)
 	switch {
 	case page > Page.TotalPage-5 && Page.TotalPage > 5: //最后5页

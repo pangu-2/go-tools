@@ -7,5 +7,5 @@ import (
 
 func TestSha1(t *testing.T) {
 	fmt.Println(Sha1("123456"))
-	fmt.Println(Sha256("123456"))
+	fmt.Println(Sha256("1234561111111111111111111111111111111"))
 }

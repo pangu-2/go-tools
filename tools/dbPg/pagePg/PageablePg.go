@@ -1,7 +1,6 @@
 package pagePg
 
 import (
-	"fmt"
 	"math"
 )
 
@@ -66,7 +65,7 @@ func (c *PageablePg) MakePageable() PageablePg {
 	if c.TotalPage == 0 {
 		c.TotalPage = 1
 	}
-	fmt.Println("PageNum.TotalPage", c.TotalPage)
+	//fmt.Println("PageNum.TotalPage", c.TotalPage)
 	pages := make([]int64, 5)
 	switch {
 	case page > c.TotalPage-5 && c.TotalPage > 5: //最后5页
