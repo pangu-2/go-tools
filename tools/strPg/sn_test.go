@@ -2,9 +2,10 @@ package strPg
 
 import (
 	"fmt"
-	"github.com/pangu-2/go-tools/tools/convPg"
 	"strconv"
 	"testing"
+
+	"github.com/pangu-2/go-tools/tools/convPg"
 )
 
 func TestSn(t *testing.T) {
@@ -40,4 +41,9 @@ func TestSn2(t *testing.T) {
 	//18446744073709551615   uint64 最大值
 	fmt.Println(GenerateNumberId19())
 	//2506041952171494613
+}
+
+func TestSn222(t *testing.T) {
+	fmt.Println(GenerateNumberId22ByPrefix("ABC"))
+	//ABC2508161709010545726546
 }

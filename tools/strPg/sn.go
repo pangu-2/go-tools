@@ -2,15 +2,16 @@ package strPg
 
 import (
 	"fmt"
-	"github.com/pangu-2/go-tools/tools/convPg"
-	"github.com/pangu-2/go-tools/tools/datetimePg"
-	"github.com/pangu-2/go-tools/tools/slicePg"
 	"math"
 	"os"
 	"strconv"
 	"strings"
 	"sync/atomic"
 	"time"
+
+	"github.com/pangu-2/go-tools/tools/convPg"
+	"github.com/pangu-2/go-tools/tools/datetimePg"
+	"github.com/pangu-2/go-tools/tools/slicePg"
 )
 
 // 生成单号
@@ -104,7 +105,7 @@ func GenerateNumberId22() string {
 	return format
 }
 
-// GenerateNumberId18 生成22位时间格式id号，例子:2303050010557521234567
+// GenerateNumberId18 生成18位时间格式id号，例子:2303050010557521234567
 // 格式：年(2位)+月+日+时+分+秒+毫秒(3位)+随机数字(3位)
 func GenerateNumberId18() int64 {
 	now := time.Now()
@@ -116,7 +117,7 @@ func GenerateNumberId18() int64 {
 	return convPg.StrToInt64(format)
 }
 
-// GenerateNumberId19 生成22位时间格式id号，例子:23030500105575212345678
+// GenerateNumberId19 生成19位时间格式id号，例子:23030500105575212345678
 // 格式：年(2位)+月+日+时+分+秒+毫秒(3位)+随机数字(4位)
 func GenerateNumberId19() uint64 {
 	now := time.Now()
@@ -136,6 +137,36 @@ func GenerateNumberId19ByPrefix(prefix string) string {
 	format = strings.Replace(format, ".", "", -1)
 	//合并
 	format = format + GetNanoIdNumber(4)
+	format = prefix + format
+	return format
+}
+
+// GenerateNumberId19YearDay 生成19位时间格式id号，例子:23030500105575212345678
+// 格式：年(2位)+xxx(3位[一年中第几天])+时+分+秒+毫秒(3位)+随机数字(4位)
+func GenerateNumberId19YearDay() uint64 {
+	now := time.Now()
+	//年份
+	year := now.Format("06")
+	//一年中的第几天
+	yearDay := now.YearDay()
+	//时分秒毫秒
+	format := now.Format(datetimePg.HIS_SSS)
+	//去除 .
+	format = strings.Replace(format, ".", "", -1)
+	//合并
+	format = year + strconv.Itoa(yearDay) + format + GetNanoIdNumber(5)
+	//转换
+	return convPg.StrToUint64(format)
+}
+
+// GenerateNumberId22ByPrefix 生成 自定义前缀 + 22位时间格式id号，例子:AAAAA23030500105575212345678
+// 格式：前缀+年(2位)+月+日+时+分+秒+毫秒(3位)+随机数字(4位)
+func GenerateNumberId22ByPrefix(prefix string) string {
+	now := time.Now()
+	format := now.Format(datetimePg.YMDHIS_SSS2)
+	format = strings.Replace(format, ".", "", -1)
+	//合并
+	format = format + GetNanoIdNumber(7)
 	format = prefix + format
 	return format
 }
